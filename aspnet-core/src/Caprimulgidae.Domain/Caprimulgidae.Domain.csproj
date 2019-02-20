@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <ApplicationIcon />
+    <StartupObject />
+    <AssemblyName>Caprimulgidae.Domain</AssemblyName>
+    <RootNamespace>Caprimulgidae.Domain</RootNamespace>
+    <Win32Resource />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Antilopes.Domain.Core" Version="1.0.0" />
+    <PackageReference Include="Antilopes.Identity" Version="1.0.0" />
+    <PackageReference Include="Antilopes.ViewModels" Version="1.0.0" />
+    <PackageReference Include="Optional" Version="4.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\ValidationMessages.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ValidationMessages.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\ValidationMessages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ValidationMessages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Events\" />
+    <Folder Include="EventsHandlers\" />
+  </ItemGroup>
+
+</Project>

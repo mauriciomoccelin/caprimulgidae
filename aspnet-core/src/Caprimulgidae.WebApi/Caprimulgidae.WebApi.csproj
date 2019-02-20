@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <UserSecretsId>1d3e98cb-2f1f-4627-ac74-1cb1a93dea6d</UserSecretsId>
+    <AssemblyName>Caprimulgidae.WebApi</AssemblyName>
+    <RootNamespace>Caprimulgidae.WebApi</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Antilopes.WebApi" Version="1.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Formatters.Xml" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.0.2105168" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Caprimulgidae.Application\Caprimulgidae.Application.csproj" />
+    <ProjectReference Include="..\Caprimulgidae.Infra.CrossCutting.IoC\Caprimulgidae.Infra.CrossCutting.IoC.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>

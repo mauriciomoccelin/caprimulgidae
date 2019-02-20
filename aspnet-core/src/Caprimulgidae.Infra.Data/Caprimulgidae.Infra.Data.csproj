@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <ApplicationIcon />
+    <StartupObject />
+    <AssemblyName>Caprimulgidae.Infra.Data</AssemblyName>
+    <RootNamespace>Caprimulgidae.Infra.Data</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Antilopes.Repository" Version="1.0.0" />
+    <PackageReference Include="Dapper" Version="1.50.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Caprimulgidae.Domain\Caprimulgidae.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
