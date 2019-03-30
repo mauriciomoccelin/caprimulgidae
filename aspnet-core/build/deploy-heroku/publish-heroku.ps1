@@ -12,6 +12,7 @@ function Build-App {
     Ok
 }
 
+
 function Publish-On-Heroku {
     Notification "Publicando imagem no Heroku: $deployment_name ..."
     Set-Location $deploy_path_temp
@@ -27,7 +28,7 @@ function Finish {
     Set-Location $deploy_path
     Remove-Item $deploy_path_temp -Recurse
     Ok
-    heroku open --app $deployment_name
+    Invoke-Expression "cmd.exe /C start /b https://caprimuldidae.herokuapp.com/swagger/index.html"
 }
 
 function Notification {
@@ -39,11 +40,11 @@ function Ok {
     Write-Host "Ok" -ForegroundColor White -BackGroundColor Green
 }
 
-$base_path = Get-Base-Path
-$deploy_path = "$base_path\build\deploy-heroku"
-$deploy_path_temp = "$base_path\build\deploy-heroku\temp"
-$app_path = "$base_path\src\Caprimulgidae.WebApi"
-$deployment_name = "caprimuldidae"
+[string]$base_path = Get-Base-Path
+[string]$deploy_path = "$base_path\build\deploy-heroku"
+[string]$deploy_path_temp = "$base_path\build\deploy-heroku\temp"
+[string]$app_path = "$base_path\src\Caprimulgidae.WebApi"
+[string]$deployment_name = "caprimuldidae"
 
 Build-App
 Publish-On-Heroku
