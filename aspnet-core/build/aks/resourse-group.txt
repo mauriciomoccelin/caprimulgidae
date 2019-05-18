@@ -1,0 +1,19 @@
+az login -u 'mauriciomoccellin@hotmail.com' -p 
+
+az group create \
+  --name caprimuldidaeGroup \
+  --location eastus
+
+az acr create \
+  --resource-group caprimuldidaeGroup \
+  --name caprimuldidaeAcr \
+  --sku Basic
+
+az aks create \
+  --resource-group myResourceGroup \
+  --name myAKSCluster \
+  --node-count 1 \
+  --enable-addons monitoring \
+  --generate-ssh-keys
+
+az aks get-credentials --resource-group myResourceGroup --name myAKSCluster

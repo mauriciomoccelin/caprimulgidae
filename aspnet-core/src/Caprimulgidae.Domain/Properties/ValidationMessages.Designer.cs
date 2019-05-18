@@ -19,7 +19,7 @@ namespace Caprimulgidae.Domain.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class ValidationMessages {
@@ -79,7 +79,7 @@ namespace Caprimulgidae.Domain.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to o &apos;{}&apos; não é válido..
+        ///   Looks up a localized string similar to O email &apos;{0}&apos; é inválido..
         /// </summary>
         internal static string EmailInvalido {
             get {

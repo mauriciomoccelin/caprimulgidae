@@ -1,0 +1,20 @@
+{
+  "kind": "PersistentVolumeClaim",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "pvcsqldata",
+    "annotations": {
+      "volume.beta.kubernetes.io/storage-class": "sqldisk"
+    }
+  },
+  "spec": {
+    "accessModes": [
+      "ReadWriteOnce"
+    ],
+    "resources": {
+      "requests": {
+        "storage": "8Gi"
+      }
+    }
+  }
+}

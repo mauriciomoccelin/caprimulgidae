@@ -124,6 +124,6 @@
     <value>O campo '{0}' é obrigátorio.</value>
   </data>
   <data name="EmailInvalido" xml:space="preserve">
-    <value>o '{}' não é válido.</value>
+    <value>O email '{0}' é inválido.</value>
   </data>
 </root>

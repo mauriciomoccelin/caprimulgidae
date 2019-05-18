@@ -5,10 +5,10 @@ function Get-Base-Path {
 }
 
 function Build-App {
-    Notification "Gerando Arquivos para publicação ..."
+    Notification "Gerando Arquivos para publicaï¿½ï¿½o ..."
     Set-Location $app_path
     dotnet publish --configuration Release --output $deploy_path_temp --verbosity quiet
-    Get-ChildItem -Path $deploy_path_temp -Filter "*.pdb" -Recurse | foreach { Remove-Item -Path $_.FullName }
+    Get-ChildItem -Path $deploy_path_temp -Filter "*.pdb" -Recurse | Select-String { Remove-Item -Path $_.FullName }
     Ok
 }
 
@@ -24,7 +24,7 @@ function Publish-On-Heroku {
 }
 
 function Finish {
-    Notification "Removendo arquivos temporários ..."
+    Notification "Removendo arquivos temporï¿½rios ..."
     Set-Location $deploy_path
     Remove-Item $deploy_path_temp -Recurse
     Ok

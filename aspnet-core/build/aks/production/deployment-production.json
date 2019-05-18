@@ -1,0 +1,33 @@
+{
+	"apiVersion": "extensions/v1beta1",
+	"kind": "Deployment",
+	"metadata": {
+		"name": "caprimuldidae"
+	},
+	"spec": {
+		"replicas": 3,
+		"template": {
+			"metadata": {
+				"labels": {
+					"version" : "prod",
+					"app": "caprimuldidae"
+				}
+			},
+			"spec": {
+				"containers": [
+					{
+						"name": "caprimuldidae",
+						"imagePullPolicy": "Never",
+						"image": "caprimuldidae/deployment:latest",
+						"ports": [
+							{
+								"name": "caprimuldidae",
+								"containerPort": 80
+							}
+						]
+					}
+				]
+			}
+		}
+	}
+}

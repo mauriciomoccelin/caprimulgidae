@@ -42,7 +42,11 @@ namespace Caprimulgidae.Domain.CommandHandlers
 
         public async Task<Unit> Handle(RegistrarUsuarioCommand request, CancellationToken cancellationToken)
         {
-            if (!request.IsValid()) return await Unit.Task;
+            if (!request.IsValid())
+            {
+                NotifyValidationErrors(request);
+                return await Unit.Task;
+            }
 
             var usuario = Usuario.CriarParaRegistrar(
                 request.PrimeiroNome,
@@ -58,7 +62,12 @@ namespace Caprimulgidae.Domain.CommandHandlers
 
         public async Task<Option<string>> Handle(AutenticarUsuarioCommand request, CancellationToken cancellationToken)
         {
-            if (!request.IsValid()) return Option.None<string>();
+            if (!request.IsValid())
+            {
+                NotifyValidationErrors(request);
+                return Option.None<string>();
+            }
+
             var usuario = Usuario.CriarAutenticar(request.Email, request.Senha);
 
             if (!usuario.PodeSeAutenticar(usuarioReadOnlyRepository))
