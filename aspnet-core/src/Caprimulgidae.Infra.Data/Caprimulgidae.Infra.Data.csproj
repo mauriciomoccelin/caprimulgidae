@@ -10,7 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Antilopes.Repository" Version="1.0.0" />
+    <PackageReference Include="Antilopes.Repository" Version="1.1.1.6" />
     <PackageReference Include="Dapper" Version="1.50.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.2.0" />

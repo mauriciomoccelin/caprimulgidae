@@ -6,8 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Antilopes.Domain.Core" Version="1.0.0" />
-    <PackageReference Include="Antilopes.Identity" Version="1.0.0" />
+    <PackageReference Include="Antilopes.Domain.Core" Version="1.1.1.6" />
   </ItemGroup>
 
   <ItemGroup>
