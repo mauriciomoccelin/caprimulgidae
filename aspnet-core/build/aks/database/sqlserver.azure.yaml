@@ -54,7 +54,7 @@ spec:
         image: mcr.microsoft.com/mssql/server:2017-latest
         env:
         - name: SA_PASSWORD
-          value: 'rp3dcU8=V@@^p4_z#$'
+          value: ''
         - name: ACCEPT_EULA
           value: 'Y'
         ports:
