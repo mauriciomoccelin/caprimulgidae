@@ -1,4 +1,5 @@
-﻿using Caprimulgidae.Domain.Interfaces.Eventos;
+﻿using Antilopes.Common.Helpers.AppSettings;
+using Caprimulgidae.Domain.Interfaces.Eventos;
 using Caprimulgidae.Domain.ViewModels.Eventos;
 using Optional;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace Caprimulgidae.Infra.Data.Repositorys.Eventos
 {
     public sealed class EventoReadOnlyRepository : ReadOnlyRepository, IEventoReadOnlyRepository
     {
-        private EventoReadOnlyRepository() { }
+        public EventoReadOnlyRepository(IAppSettingsHelper appSettingsHelper) : base (appSettingsHelper){ }
 
         protected override string PrincipalTable => nameof(Eventos);
 

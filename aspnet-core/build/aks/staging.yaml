@@ -1,0 +1,46 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: caprimuldidae
+  labels:
+    app: caprimuldidae
+spec:
+  type: LoadBalancer
+  ports:
+  - name: caprimuldidae
+    port: 80
+    targetPort: 80
+    protocol: TCP
+  selector:
+    app: caprimuldidae
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: caprimuldidae
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  minReadySeconds: 0
+  template:
+    metadata:
+      labels:
+        version: stg
+        app: caprimuldidae
+    spec:
+      containers:
+      - name: caprimuldidae
+        imagePullPolicy: Always
+        image: acrcaprimuldidae.azurecr.io/caprimuldidaestg:latest
+        ports:
+        - name: caprimuldidae
+          containerPort: 80
+        env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: Staging
+      imagePullSecrets:
+      - name: acrcaprimuldidaekey

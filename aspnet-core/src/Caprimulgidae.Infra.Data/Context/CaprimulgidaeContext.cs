@@ -1,9 +1,9 @@
-﻿using Caprimulgidae.Domain.Models.AreasConhecimentos;
+﻿using Antilopes.Common.Helpers.AppSettings;
+using Caprimulgidae.Domain.Models.AreasConhecimentos;
 using Caprimulgidae.Domain.Models.Estimativas;
 using Caprimulgidae.Domain.Models.Eventos;
 using Caprimulgidae.Domain.Models.Usuarios;
 using Caprimulgidae.Infra.Data.Mappings;
-using Caprimulgidae.Infra.Data.Repositorys;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
@@ -11,6 +11,13 @@ namespace Caprimulgidae.Infra.Data.Context
 {
     public class CaprimulgidaeContext : DbContext
     {
+        private readonly IAppSettingsHelper appSettingsHelper;
+
+        public CaprimulgidaeContext()
+        {
+            appSettingsHelper = new AppSettingsHelper();
+        }
+
         public DbSet<Evento> Eventos { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<AreaConhecimento> AreaConhecimentos { get; set; }
@@ -30,6 +37,6 @@ namespace Caprimulgidae.Infra.Data.Context
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) =>
-            optionsBuilder.UseSqlServer(AppSettingsHelper.GetConnectionString());
+            optionsBuilder.UseSqlServer(appSettingsHelper.GetConnectionString());
     }
 }

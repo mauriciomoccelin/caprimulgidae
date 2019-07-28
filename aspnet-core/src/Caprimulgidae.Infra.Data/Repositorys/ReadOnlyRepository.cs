@@ -1,9 +1,10 @@
-﻿using Antilopes.Repository.Dapper.SQLServer;
+﻿using Antilopes.Common.Helpers.AppSettings;
+using Antilopes.Repository.Dapper.SQLServer;
 
 namespace Caprimulgidae.Infra.Data.Repositorys
 {
     public abstract class ReadOnlyRepository : SQLServerDapperRepository
     {
-        protected ReadOnlyRepository() : base(AppSettingsHelper.GetConnectionString()) { }
+        public ReadOnlyRepository(IAppSettingsHelper appSettingsHelper) : base(appSettingsHelper.GetConnectionString()) { }
     }
 }

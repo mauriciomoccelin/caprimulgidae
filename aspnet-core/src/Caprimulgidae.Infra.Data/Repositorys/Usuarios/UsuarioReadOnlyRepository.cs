@@ -1,4 +1,5 @@
-﻿using Caprimulgidae.Domain.Interfaces.Usuarios;
+﻿using Antilopes.Common.Helpers.AppSettings;
+using Caprimulgidae.Domain.Interfaces.Usuarios;
 using Caprimulgidae.Domain.ViewModels.Usuarios;
 using Optional;
 using System.Threading.Tasks;
@@ -7,7 +8,7 @@ namespace Caprimulgidae.Infra.Data.Repositorys.Usuarios
 {
     public sealed class UsuarioReadOnlyRepository : ReadOnlyRepository, IUsuarioReadOnlyRepository
     {
-        public UsuarioReadOnlyRepository() { }
+        public UsuarioReadOnlyRepository(IAppSettingsHelper appSettingsHelper) : base(appSettingsHelper) { }
 
         protected override string PrincipalTable => nameof(Usuarios);
 

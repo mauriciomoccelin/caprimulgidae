@@ -1,3 +1,0 @@
-Selecionas namespaces
-kubectl get namespaces --show-labels | Select-String -Pattern "name="
-

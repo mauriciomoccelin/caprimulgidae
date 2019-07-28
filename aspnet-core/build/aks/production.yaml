@@ -1,0 +1,59 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: caprimuldidae
+  labels:
+    app: caprimuldidae
+spec:
+  type: LoadBalancer
+  ports:
+  - name: caprimuldidae
+    port: 80
+    targetPort: 80
+    protocol: TCP
+  selector:
+    app: caprimuldidae
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: caprimuldidae
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  minReadySeconds: 0
+  template:
+    metadata:
+      labels:
+        version: prod
+        app: caprimuldidae
+    spec:
+      containers:
+      - name: caprimuldidae
+        imagePullPolicy: Always
+        image: acrcaprimuldidae.azurecr.io/caprimuldidaeprod:1.0.2.5
+        ports:
+        - name: caprimuldidae
+          containerPort: 80
+        env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: Production
+      imagePullSecrets:
+      - name: acrcaprimuldidaekey
+---
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+ name: prod-hpa
+spec:
+ scaleTargetRef:
+   apiVersion: apps/v1beta1
+   kind: Deployment
+   name: caprimuldidae
+ minReplicas: 3
+ maxReplicas: 6
+ targetCPUUtilizationPercentage: 75

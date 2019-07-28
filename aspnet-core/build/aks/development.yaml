@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: development
+  name: caprimuldidae
+  labels:
+    app: caprimuldidae
+spec:
+  type: LoadBalancer
+  ports:
+  - name: caprimuldidae
+    port: 80
+    targetPort: 80
+    protocol: TCP
+  selector:
+    app: caprimuldidae
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  namespace: development
+  name: caprimuldidae
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        version: dev
+        app: caprimuldidae
+    spec:
+      containers:
+      - name: caprimuldidae
+        imagePullPolicy: Never
+        image: caprimuldidae/deployment:latest
+        ports:
+        - name: caprimuldidae
+          containerPort: 80
+        env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: Development

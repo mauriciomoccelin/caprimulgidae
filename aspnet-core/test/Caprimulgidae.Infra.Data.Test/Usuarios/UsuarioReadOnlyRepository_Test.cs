@@ -1,28 +1,32 @@
 ﻿using Antilopes.Tests;
 using Caprimulgidae.Domain.Interfaces.Usuarios;
 using Caprimulgidae.Infra.Data.Repositorys.Usuarios;
-using System.Threading.Tasks;
 using Xunit;
+using FluentAssertions;
 
 namespace Caprimulgidae.Infra.Data.Test.Usuarios
 {
-    public class UsuarioReadOnlyRepository_Test : BaseTestReadOnlyRepository<IUsuarioReadOnlyRepository, UsuarioReadOnlyRepository>
+    public class UsuarioReadOnlyRepository_Test : BaseTestReadOnlyRepository
     {
-        [Fact]
-        public void ExisteUsuarioParaEmailEhSenha()
+        private readonly IUsuarioReadOnlyRepository usuarioReadOnlyRepository;
+
+        public UsuarioReadOnlyRepository_Test()
         {
-            TestIfNotThrow(async x => await x.ExisteUsuarioParaEmailEhSenha("", ""));
-            TestIfBeOfType(async () => await readOnlyRepository.ExisteUsuarioParaEmailEhSenha("", ""));
+            usuarioReadOnlyRepository = new UsuarioReadOnlyRepository(appSettingsHelper);
         }
 
         [Fact]
-        public async void ObterParaAutenticacao()
+        public void ExisteUsuarioParaEmailEhSenha()
         {
-            await FactoryTestAsync(tasks =>
-            {
-                tasks.Add(Task.Run(() => TestIfNotThrow(async x => await x.ObterParaAutenticacao(""))));
-                tasks.Add(Task.Run(() => TestIfBeOfType(async () => await readOnlyRepository.ObterParaAutenticacao(""))));
-            });
+            var result = usuarioReadOnlyRepository.Awaiting(x => x.ExisteUsuarioParaEmailEhSenha("", ""));
+            result.Should().NotThrow();
+        }
+
+        [Fact]
+        public void ObterParaAutenticacao()
+        {
+            var result = usuarioReadOnlyRepository.Awaiting(x => x.ObterParaAutenticacao(""));
+            result.Should().NotThrow();
         }
     }
 }
